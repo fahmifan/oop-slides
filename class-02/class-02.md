@@ -140,3 +140,35 @@ public class Main {
 
 ```
 
+---
+
+## Class: Constructor
+Method khusus lain pada class adalah Constructor. Method ini memiliki nama yang sama dengan nama class.
+Method ini yang digunakan ketika instansiasi
+
+---
+
+## Class: Constructor
+```java
+class Nasabah {
+    ...
+    public Nasabah(int id, String nama, String alamat, String telp) {
+        this.id = id;
+        this.nama = nama;
+        this.alamat = alamat;
+        this.telp = telp;
+    }
+}
+
+public class Main {
+    public static void main(String[] args) {
+        Nasabah nasabah = new Nasabah(1, "fahmi", "bandung", "08123123");
+        Tabungan tabungan = new Tabungan();
+        tabungan.nasabah = nasabah;
+
+        System.out.println(tabungan);
+        tabungan.deposit(100);
+        System.out.println(tabungan);
+    }
+}
+```

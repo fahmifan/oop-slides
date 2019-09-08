@@ -4,14 +4,14 @@ class Nasabah {
     String alamat;
     String telp;
 
-    // // Constructor adalah method khusus 
-    // // yang dapat dipanggil ketika instansiasi class
-    // public Nasabah(int id, String nama, String alamat, String telp) {
-    //     this.id = id;
-    //     this.nama = nama;
-    //     this.alamat = alamat;
-    //     this.telp = telp;
-    // }
+    // Constructor adalah method khusus 
+    // yang dapat dipanggil ketika instansiasi class
+    public Nasabah(int id, String nama, String alamat, String telp) {
+        this.id = id;
+        this.nama = nama;
+        this.alamat = alamat;
+        this.telp = telp;
+    }
 }
 
 class Tabungan {
@@ -36,9 +36,8 @@ class Tabungan {
 }
 
 public class Main {
-
     public static void main(String[] args) {
-        Nasabah nasabah = new Nasabah();
+        Nasabah nasabah = new Nasabah(1, "fahmi", "bandung", "08123123");
         nasabah.id = 99;
         nasabah.nama = "fahmi";
         Tabungan tabungan = new Tabungan();
