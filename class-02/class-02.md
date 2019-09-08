@@ -4,6 +4,8 @@
 * Class
     * Enkapsulasi
     * Access Modifier
+    * package
+    * import
 
 ---
 
@@ -344,3 +346,10 @@ public class Main {
 
 
 ```
+
+---
+
+## Class: packag & import
+Kita bisa mengkelompokkan class2 yang berkaitan ke dalam suatu package
+dan mengimportnya ke dalam class lain. Penggunaan pacakge dapat melihat 
+pada folder [example-04](https://github.com/miun173/oop-slides/tree/master/class-02/example-04)
