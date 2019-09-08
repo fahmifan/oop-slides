@@ -39,23 +39,32 @@ class Tabungan {
     }
 }
 
+class Bank {
+    int tabunganCount = 0;
+    Tabungan[] listTabungan = new Tabungan[5];
+
+    public void addTabungan(Tabungan tb) {
+        this.listTabungan[this.tabunganCount] = tb;
+        this.tabunganCount++;
+    }
+
+    public String toString() {
+        String fmt = "";
+        for (int i = 0; i < this.tabunganCount; i++) {
+            Tabungan tb = this.listTabungan[i]; 
+            fmt = fmt.concat(tb.toString());
+        }
+
+        return fmt;
+    }
+}
+
 public class Main {
     public static void main(String[] args) {
-        Tabungan[] manyTabungan = new Tabungan[5];
-
-        Nasabah nasabah = new Nasabah(1, "fahmi", "bandung", "08123123");
-        Tabungan tabungan = new Tabungan(nasabah);
-        System.out.println(tabungan);
-
-        tabungan.deposit(100);
-        manyTabungan[0] = tabungan;
-
-        System.out.println(manyTabungan[0]);
-
-        manyTabungan[1] = new Tabungan(new Nasabah(2, "vega", "aceh", "08123123"));
-        manyTabungan[2] = new Tabungan(new Nasabah(3, "argil", "bandung", "08123123"));
-
-        System.out.println(manyTabungan[1]);
-        System.out.println(manyTabungan[2]);
+        Bank bank = new Bank();
+        bank.addTabungan(new Tabungan(new Nasabah(1, "Eko", "bandung", "08123123")));
+        bank.addTabungan(new Tabungan(new Nasabah(2, "Fajar", "bandung", "08123123")));
+        bank.addTabungan(new Tabungan(new Nasabah(3, "Putra", "bandung", "08123123")));
+        System.out.println(bank);
     }
 }

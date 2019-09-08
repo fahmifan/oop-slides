@@ -236,3 +236,38 @@ public class Main {
     }
 }
 ```
+---
+
+## Class: Array of Class: refactor
+Mari kita coba buat class Bank yang akan memuat Array of Tabungan
+```java
+class Bank {
+    int tabunganCount = 0;
+    Tabungan[] listTabungan = new Tabungan[5];
+
+    public void addTabungan(Tabungan tb) {
+        this.listTabungan[this.tabunganCount] = tb;
+        this.tabunganCount++;
+    }
+
+    public String toString() {
+        String fmt = "";
+        for (int i = 0; i < this.tabunganCount; i++) {
+            Tabungan tb = this.listTabungan[i]; 
+            fmt = fmt.concat(tb.toString());
+        }
+
+        return fmt;
+    }
+}
+
+public class Main {
+    public static void main(String[] args) {
+        Bank bank = new Bank();
+        bank.addTabungan(new Tabungan(new Nasabah(1, "Eko", "bandung", "08123123")));
+        bank.addTabungan(new Tabungan(new Nasabah(2, "Fajar", "bandung", "08123123")));
+        bank.addTabungan(new Tabungan(new Nasabah(3, "Putra", "bandung", "08123123")));
+        System.out.println(bank);
+    }
+}
+```
