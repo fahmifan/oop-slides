@@ -81,9 +81,13 @@ public class Main {
 
 ---
 
-## Class: method
+## Class: Method
 Class dapat memiliki method sendiri yang melekat pada class itu. 
 Tambahkan method `deposit` & `getSaldo` berikut.
+
+---
+
+## Class: Method
 ```java
 class Tabungan {
     ...
@@ -271,3 +275,4 @@ public class Main {
     }
 }
 ```
+
