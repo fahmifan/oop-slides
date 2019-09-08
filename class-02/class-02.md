@@ -1,9 +1,8 @@
 ## Pertemuan 2
 
 * String method
-* Enkapsulasi
-* UML
-* package
+* Class
+    * Enkapsulasi
 
 ---
 
@@ -169,6 +168,71 @@ public class Main {
         System.out.println(tabungan);
         tabungan.deposit(100);
         System.out.println(tabungan);
+    }
+}
+```
+---
+
+## Class: Constructor: refactor
+```java
+class Nasabah {
+    ...
+    public Nasabah(int id, String nama, String alamat, String telp) {
+        this.id = id;
+        this.nama = nama;
+        this.alamat = alamat;
+        this.telp = telp;
+    }
+}
+
+class Tabungan {
+    ...
+    public Tabungan(Nasabah nasabah) {
+        this.nasabah = nasabah;
+    }
+    ...
+}
+
+public class Main {
+    public static void main(String[] args) {
+        Nasabah nasabah = new Nasabah(1, "fahmi", "bandung", "08123123");
+        Tabungan tabungan = new Tabungan(nasabah);
+
+        System.out.println(tabungan);
+        tabungan.deposit(100);
+        System.out.println(tabungan);
+    }
+}
+```
+
+---
+
+## Class: Array of Class
+Misalkan kita membuat aplikasi Bank, tentunya akan ada banyak nasabah.
+Pada struktur data, kita mengenal namanya array, kita dapat menyimpan nasabah2 itu kedalam array
+
+---
+
+## Class: Array of Class
+```java
+public class Main {
+    public static void main(String[] args) {
+        Tabungan[] manyTabungan = new Tabungan[5];
+
+        Nasabah nasabah = new Nasabah(1, "fahmi", "bandung", "08123123");
+        Tabungan tabungan = new Tabungan(nasabah);
+        System.out.println(tabungan);
+
+        tabungan.deposit(100);
+        manyTabungan[0] = tabungan;
+
+        System.out.println(manyTabungan[0]);
+
+        manyTabungan[1] = new Tabungan(new Nasabah(2, "vega", "aceh", "08123123"));
+        manyTabungan[2] = new Tabungan(new Nasabah(3, "argil", "bandung", "08123123"));
+
+        System.out.println(manyTabungan[1]);
+        System.out.println(manyTabungan[2]);
     }
 }
 ```
