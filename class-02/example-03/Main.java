@@ -17,8 +17,8 @@ class Nasabah {
 class Tabungan {
     int id;
     Nasabah nasabah;
-    double debit;
-    double credit;
+    private double debit;
+    private double credit;
 
     public Tabungan(Nasabah nasabah) {
         this.nasabah = nasabah;
@@ -26,6 +26,17 @@ class Tabungan {
 
     public void deposit(int amount) {
         this.debit += amount;
+    }
+
+    // withdraw will increase the credit amount & return boolean
+    // success will return true else return false
+    public boolean withdraw(int amount) {
+        if (this.getSaldo() > amount) {
+            this.credit += amount;
+            return true;
+        }
+
+        return false;
     }
 
     public double getSaldo() {
@@ -66,5 +77,19 @@ public class Main {
         bank.addTabungan(new Tabungan(new Nasabah(2, "Fajar", "bandung", "08123123")));
         bank.addTabungan(new Tabungan(new Nasabah(3, "Putra", "bandung", "08123123")));
         System.out.println(bank);
+
+        bank.listTabungan[0].deposit(100);
+        System.out.println(bank);
+        boolean ok = bank.listTabungan[0].withdraw(200);
+        if (!ok) {
+            System.err.println("failed to withdraw");
+        }
+
+        ok = bank.listTabungan[0].withdraw(90);
+        if (ok) {
+            System.out.printf("success withdraw $%d\n", 90);
+        }
+        System.out.println(bank);
+
     }
 }

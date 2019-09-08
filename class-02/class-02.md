@@ -85,6 +85,8 @@ public class Main {
 Class dapat memiliki method sendiri yang melekat pada class itu. 
 Tambahkan method `deposit` & `getSaldo` berikut.
 
+fyi: pada akutansi, saldo itu adalah semua deposit dikurang semua credit yang kita punya.
+
 ---
 
 ## Class: Method
@@ -275,4 +277,69 @@ public class Main {
     }
 }
 ```
+---
 
+## Class: Access Modifier
+Pada saat kita menarik uang dari tabungan, tentu tidak boleh melebihi saldo yang ada bukan?
+Agar itu bisa terjadi, kita perlu membuat atribute credit tidak bisa ditambah.
+Pada java terdapat fitur access modifier yang dapat digunakan pada kasus ini.
+
+---
+
+## Class: Access Modifier
+Modifier    |	Class   |   Package |	Subclass    |	World
+--          | --        | --        | --            |---
+public      | Y	        | Y         | Y             | Y
+protected   | Y         | Y         | Y             | N
+no modifier	| Y         | Y         | N             | N
+private     | Y         | N         | N             | N
+
+---
+
+## Class: Access Modifier
+```java
+class Tabungan {
+    ...
+    private double debit;
+    private double credit;
+
+    ...
+    // withdraw will increase the credit amount & return boolean
+    // success will return true else return false
+    public boolean withdraw(int amount) {
+        if (this.getSaldo() > amount) {
+            this.credit += amount;
+            return true;
+        }
+
+        return false;
+    }
+    ...
+}
+
+public class Main {
+    public static void main(String[] args) {
+        Bank bank = new Bank();
+        bank.addTabungan(new Tabungan(new Nasabah(1, "Eko", "bandung", "08123123")));
+        bank.addTabungan(new Tabungan(new Nasabah(2, "Fajar", "bandung", "08123123")));
+        bank.addTabungan(new Tabungan(new Nasabah(3, "Putra", "bandung", "08123123")));
+        System.out.println(bank);
+
+        bank.listTabungan[0].deposit(100);
+        System.out.println(bank);
+        boolean ok = bank.listTabungan[0].withdraw(200);
+        if (!ok) {
+            System.err.println("failed to withdraw");
+        }
+
+        ok = bank.listTabungan[0].withdraw(90);
+        if (ok) {
+            System.out.printf("success withdraw $%d\n", 90);
+        }
+        System.out.println(bank);
+
+    }
+}
+
+
+```
